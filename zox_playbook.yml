@@ -1,0 +1,25 @@
+---
+- name: zabbix agent installation
+  hosts: zox
+  sudo: yes
+  tasks:
+    - pip:
+       name: pyzabbix
+
+
+    - name: tranfer scripts to the remote servers
+      copy: src=~/zabbix_install_agent.sh dest=~/ mode=0777
+      copy: src=~/zabbix_add_hosts.py dest=~/ mode=0777
+      copy: src=~/system_details.sh dest=~/ mode=0777
+
+
+    - name: execute all scripts on the remote server
+      command: bash ~/zabbix_install_agent.sh
+      command: python ~/zabbix_add_hosts.py
+      command: bash ~/system_details.sh
+
+
+    - name: copy system details to localhost
+      fetch:
+        src: /details.tar.gz
+        dest: ~/machine_details
