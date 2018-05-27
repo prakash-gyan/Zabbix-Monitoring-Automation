@@ -1,3 +1,6 @@
+
 1.PLACE ALL FILES IN YOUR LINUX HOST SERVER'S HOME DIRECTORY
 2.FIRST RUN "zabbix_server_install.sh" ON YOUR HOST SERVER
+3.place all remote-server ip under "zox" group in /etc/ansible/hosts file 
+4.generate ssh-key on host server and copy public-key to all the remote server
 3.RUN "zox_playbook.yml"
