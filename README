@@ -13,3 +13,6 @@ monitoring for cpu and ram of the server.
 remote server(cpu_details, ram_deails and os_details and put it under "machine details" folder on HOST server),install and configure 
 zabbix agent on each server under "zox" group and addall the remote server to the zabbix server from where you can monitor it's CPU 
 utilization, RAM configured and set alert for devops team when cpu or ram utilization reaches above 80% for more than 5 min.
+
+4.For launching a virtual machice we can use awscli commands on HOST SERVER (installed by the script) and delete it using the same 
+when needed.
