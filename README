@@ -1,6 +1,15 @@
-
+ 
 1.PLACE ALL FILES IN YOUR LINUX HOST SERVER'S HOME DIRECTORY
-2.FIRST RUN "zabbix_server_install.sh" ON YOUR HOST SERVER
-3.place all remote-server ip under "zox" group in /etc/ansible/hosts file 
+
+2.FIRST RUN "zabbix_server_install.sh" on your HOST SERVER. This will install and cobfigure zabbix server. After running this script
+go to the browser and accesss zabbix dashboard using "<HOST SERVER PUBLIC IP>/zabbix". complete the setup process and set trigger and
+monitoring for cpu and ram of the server.
+
+3.place all "remote-server" ip under "zox" group in /etc/ansible/hosts file
+
 4.generate ssh-key on host server and copy public-key to all the remote server
-3.RUN "zox_playbook.yml"
+
+3.RUN "zox_playbook.yml" using command "ansible-playbook zox_playbook.yml". This playbook will will fetch all the system details of the
+remote server(cpu_details, ram_deails and os_details and put it under "machine details" folder on HOST server),install and configure 
+zabbix agent on each server under "zox" group and addall the remote server to the zabbix server from where you can monitor it's CPU 
+utilization, RAM configured and set alert for devops team when cpu or ram utilization reaches above 80% for more than 5 min.
